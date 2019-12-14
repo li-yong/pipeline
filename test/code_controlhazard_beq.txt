@@ -1,0 +1,32 @@
+beq  $s0, $t0, 0x2
+addi $t1, $zero, 0x1
+addi $t2, $zero, 0x2  
+addi $t3, $zero, 0x3  //skip here
+addi $t4, $zero, 0x4
+ 
+ 
+ 
+ 
+# $ ./main.exe -f test/code_beq
+# Select mode: 1 - Instruction, 2 - Cycle: 1
+# Read input completed, total 5 instructions loaded.
+# 
+# How many insts to be run? 5 instrctions left. (0. dump then exit):  5
+# 
+# 
+# No more instructions left. Have run 3 instructionis in 9 cycles. <<< 3 insts were run.
+# now dump and exit:
+# 
+# Show dump? 0.No, 1.Reg+Latch+Statistic, 2.Inst Memeory, 3.Data Memory.  :  1
+# Dump Reg, Latch, Statistic
+# 
+# REG:
+#         $zero [r0]: 0x0         $at [r1]: 0x0           $v0 [r2]: 0x0   $v1 [r3]: 0x0
+#         $a0 [r4]: 0x0           $a1 [r5]: 0x0           $a2 [r6]: 0x0   $a3 [r7]: 0x0
+#         $t0 [r8]: 0x0           $t1 [r9]: 0x0           $t2 [r10]: 0x0  $t3 [r11]: 0x3  <<< t3<-3, t4<-4
+#         $t4 [r12]: 0x4          $t5 [r13]: 0x0          $t6 [r14]: 0x0  $t7 [r15]: 0x0
+#         $s0 [r16]: 0x0          $s1 [r17]: 0x0          $s2 [r18]: 0x0  $s3 [r19]: 0x0
+#         $s4 [r20]: 0x0          $s5 [r21]: 0x0          $s6 [r22]: 0x0  $s7 [r23]: 0x0
+#         $t8 [r24]: 0x0          $t9 [r25]: 0x0          $k0 [r26]: 0x0  $k1 [r27]: 0x0
+#         $gp [r28]: 0x0          $sp [r29]: 0x0          $fp [r30]: 0x0  $ra [r31]: 0x0
+

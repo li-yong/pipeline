@@ -1,0 +1,66 @@
+LUI $t0 0x1234
+ORI $t0 $t0 0x5678 // t0=0x12345678
+
+LUI $t1 0x1234  // t1=0x12340000
+
+MUL $t4 $t0 $t1 // $t0*$t1 = 14B60B600600000
+#				// MBS_32bits 00000001010010110110000010110110 <<< 0x14B60B6
+#				// LBS_32bits 00000000011000000000000000000000 <<< 0x600000
+
+
+# $ ./main.exe -f code_alu_mul.txt
+# Select mode: 1 - Instruction, 2 - Cycle: 1
+# Read input completed, total 4 instructions loaded.
+# 
+# How many insts to be run? 4 instrctions left. (0. dump then exit):  4
+# 
+# 
+# No more instructions left. Have run 4 instructionis in 12 cycles.
+# now dump and exit:
+# 
+# Show dump? 0.No, 1.Reg+Latch+Statistic, 2.Inst Memeory, 3.Data Memory.  :  1
+# Dump Reg, Latch, Statistic
+# 
+# REG:
+#         $zero [r0]: 0x0         $at [r1]: 0x0           $v0 [r2]: 0x0   $v1 [r3]: 0x0
+#         $a0 [r4]: 0x0           $a1 [r5]: 0x0           $a2 [r6]: 0x0   $a3 [r7]: 0x0
+#         $t0 [r8]: 0x12345678            $t1 [r9]: 0x12340000            $t2 [r10]: 0x0  $t3 [r11]: 0x0
+#         $t4 [r12]: 0x600000             $t5 [r13]: 0x14b60b6            $t6 [r14]: 0x0  $t7 [r15]: 0x0
+#         $s0 [r16]: 0x0          $s1 [r17]: 0x0          $s2 [r18]: 0x0  $s3 [r19]: 0x0
+#         $s4 [r20]: 0x0          $s5 [r21]: 0x0          $s6 [r22]: 0x0  $s7 [r23]: 0x0
+#         $t8 [r24]: 0x0          $t9 [r25]: 0x0          $k0 [r26]: 0x0  $k1 [r27]: 0x0
+#         $gp [r28]: 0x0          $sp [r29]: 0x0          $fp [r30]: 0x0  $ra [r31]: 0x0
+# 
+# 
+# 
+# pc(next inst to be fetched):    16
+# next inst index :       5
+# 
+# Latch IFID:
+#         IR: 0x00000000 00000000000000000000000000000000 noop
+#         NPC: 16
+# Latch IDEXE:
+#         IR: 0x00000000 00000000000000000000000000000000 noop
+#         NPC: 16
+#         A: 0
+#         B: 0
+#         Imm: 65535
+# Latch EXMEM:
+#         IR: 0x00000000 00000000000000000000000000000000 noop
+#         B: 0
+#         ALUOutput: 93274552097832960
+#         Cond: 0
+# Latch MEMWB:
+#         IR: 0x00000000 00000000000000000000000000000000 noop
+#         ALUOutput: 93274552097832960
+#         LMD: 0
+# 
+# STATISTIC:
+#         Clock Cycle: 12
+#         IF Utilization: 6, 50%
+#         ID Utilization: 4, 33.3333%
+#         EX Utilization: 4, 33.3333%
+#         MEM Utilization: 0, 0%
+#         WB Utilization: 4, 33.3333%
+# 
+# Show dump? 0.No, 1.Reg+Latch+Statistic, 2.Inst Memeory, 3.Data Memory.  :
